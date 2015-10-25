@@ -1,0 +1,55 @@
+<!DOCTYPE>
+
+<html ng-app>
+
+<head>
+  <title>Filters</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+</head>
+
+<body>
+  <div class="container" ng-controller="filterController">
+    <h3>Filters</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Part No</th><br>
+          <th>Description</th><br>
+          <th>Actions</th><br>
+        </tr>
+      </thead>
+      <td><input class="form-control" ng-model="filter.name"></td>
+      <td><input class="form-control" ng-model="filter.partNo"></td>
+      <td><input class="form-control" ng-model="filter.description"></td>
+      <td><button class="btn btn-primary" ng-click="addFilter()">Add Filter</button></td>
+      <td><button class="btn btn-info" ng-click="update()">Update</button></td>
+      <tbody>
+        <tr ng-repeat="filter in filters">
+          <td>{{filter.name}}</td>
+          <td>{{filter.partNo}}</td>
+          <td>{{filter.description}}</td>
+          <td><button class="btn btn-danger" ng-click="remove(filter._id)">Remove</button></td>
+          <td><button class="btn btn-warning" ng-click="edit(filter._id)">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
+
+  <!-- Script spurces -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular.min.js"></script>
+  <script src="/js/controllers/filters.js"></script>
+
+
+</body>
+
+</html>
