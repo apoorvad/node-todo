@@ -117,13 +117,19 @@ module.exports = function(app) {
 		getFilters(res);
 	});
 
-	app.get('/filters:filter_id',function(req,res){
+	app.get('/filters/filter_id',function(req,res){
 		console.log("send to populate in Edit box")
 		console.log(req.params.id);
 		Filter.findById(req.params.id,function(err,doc){
 			if(err)
-				res.send(err);
-			res.json(doc);
+				res.send("Error:" + err);
+
+				res.body.name = doc.name,
+				res.body.partNo = doc.partNo ,
+				res.body.description = doc.description
+				res.send("Response");
+
+			console.log(res);
 		});
 	});
 };

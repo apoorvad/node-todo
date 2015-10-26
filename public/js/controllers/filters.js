@@ -3,7 +3,6 @@ function filterController($scope, $http) {
   var refresh = function() {
     $http.get('/filters').success(function(response) {
       console.log("I got the data");
-      $scope.filters = response;
       console.log(response);
       $scope.filters = response;
       $scope.filter = "";
@@ -28,6 +27,7 @@ function filterController($scope, $http) {
     $http.get('/filters/' + id).success(function(response) {
       $scope.filter = response;
       console.log(response);
+      refresh();
     });
   }
 }

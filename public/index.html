@@ -1,83 +1,162 @@
 <!doctype html>
-
-<!-- ASSIGN OUR ANGULAR MODULE -->
+<html lang="en">
 <html ng-app="scotchTodo">
+
 <head>
-	<!-- META -->
+	<!-- METAS -->
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Node/Angular Todo App</title>
-
-	<!-- SCROLLS -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-	<style>
-		html 					{ overflow-y:scroll; }
-		body 					{ padding-top:50px; }
-		#todo-list 				{ margin-bottom:30px; }
-		#todo-form 	 			{ margin-bottom:50px; }
-	</style>
+	<title>Mahale DRM</title>
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="css/mystyles.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/bootstrap-social.css" rel="stylesheet">
+	<link rel="stylesheet" href="/css/custom.css">
 
 	<!-- SPELLS -->
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
-
-	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
-	<script src="js/services/todos.js"></script> <!-- load our todo service -->
-	<script src="js/core.js"></script> <!-- load our main application -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<!-- load angular -->
+	<script src="js/controllers/main.js"></script>
+	<!-- load up our controller -->
+	<script src="js/core.js"></script>
+	<!-- load our main application -->
 
 </head>
-<!-- SET THE CONTROLLER -->
+
 <body ng-controller="mainController">
-	<div class="container">
 
-		<!-- HEADER AND TODO COUNT -->
-		<div class="jumbotron text-center">
-			<h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
+	<!-- Navigation Bar : All Pages -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Mahale Sarthi</a>
+			</div>
+			<div class="container">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="#">
+							<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Overview</a>
+					</li>
+					<li>
+						<a href="aboutus.html">
+							<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Catalogue</a>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                         Orders <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">New</a></li>
+							<li><a href="#">Availability</a></li>
+							<li><a href="#">New Launch</a></li>
+							<li><a href="#">Offers</a></li>
+							<li role="separator" class="divider"></li>
+							<li class="dropdown-header">Past Orders</li>
+							<li><a href="#">Pending/Transit</a></li>
+							<li><a href="#">Past Sales</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Finance</a></li>
+					<li><a href="#">Circulars</a></li>
+					<li><a href="#">Others</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Amit Dubey<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li class="dropdown-header">Administrator</li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Settings</a></li>
+							<li><a href="#">Profile</a></li>
+							<li><a href="#">Log Out</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
 		</div>
+	</nav>
 
-		<!-- TODO LIST -->
-		<div id="todo-list" class="row">
-			<div class="col-sm-4 col-sm-offset-4">
-
-
-
-				<!-- LOOP OVER THE TODOS IN $scope.todos -->
-				<div class="checkbox" ng-repeat="todo in todos">
-					<label>
-						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
-					</label>
+	<!-- Main page -->
+	<header class="jumbotron">
+		<div class="container">
+			<div class="row row-header">
+				<div class="col-xs-12 col-sm-8">
+					<h1>MAHALE Sarthi</h1>
+					<p style="padding:30px;"></p>
+					<p>MAHLE has a local presence in all major world markets. In 2015, a total of 75,000 employees at over 170 production locations are expected to generate sales of EUR 11.5 billion.</p>
 				</div>
-
-				<p class="text-center" ng-show="loading">
-					<span class="fa fa-spinner fa-spin fa-3x"></span>
-				</p>
-
+				<div class="col-xs-12 col-sm-4">
+				</div>
 			</div>
 		</div>
+	</header>
 
-		<!-- FORM TO CREATE TODOS -->
-		<div id="todo-form" class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form>
-					<div class="form-group">
+	<div class="container">
+		<div class="row-content">
+			<div class="col-sm-12">
 
-						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-						<input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
-					</div>
-
-					<!-- createToDo() WILL CREATE NEW TODOS -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
-				</form>
 			</div>
-		</div>
 
-		<div class="text-center text-muted">
-			<p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
-			<p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular">tutorial</a>.</p>
 		</div>
 
 	</div>
 
+	<!-- Footer : All Pages -->
+	<footer class="row-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-5 col-xs-offset-1 col-sm-2 col-sm-offset-1">
+					<h5>Links</h5>
+					<ul class="list-unstyled">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Feedback</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-6 col-sm-5">
+					<h5>Our Address</h5>
+					<address>
+						MAHLE Filter Systems (India) Limited, Address
+						<br> Gat No. 410/411, Mauje Urawade,
+						<br> Tal. Mulshi, Temghar-Lavasa Rd
+						<br> Pirangut, MH 412115, India
+						<br> <i class="fa fa-phone"></i>: +91 20 6674 2200
+						<br> <i class="fa fa-fax"></i>: +91 20 6674 2200
+						<br>
+						<br><i class="fa fa-envelope"></i>:
+						<a href="mailto:support@mahale.net">support@mahale.net</a>
+					</address>
+				</div>
+				<div class="col-xs-12 col-sm-4">
+					<div class="nav navbar-nav" style="padding: 40px 10px;">
+						<a class="btn btn-social-icon btn-google-plus" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+						<a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+						<a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
+						<a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+						<a class="btn btn-social-icon btn-youtube" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+						<a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<p style="padding:10px;"></p>
+					<p align=center>© Copyright 2015 MAHALE SARTHI FILTERS</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
 </body>
+
 </html>
